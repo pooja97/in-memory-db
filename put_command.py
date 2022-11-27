@@ -1,5 +1,4 @@
 from base_command import BaseCommand
-# from db import DB
 
 class Put(BaseCommand):
     def __init__(self,receiver,key,data):
@@ -8,4 +7,4 @@ class Put(BaseCommand):
         self.data = data 
 
     def execute(self):
-        self.receiver.put(self.key,self.data)
+        return self.receiver.put(self.key,self.data)

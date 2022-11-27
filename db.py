@@ -79,7 +79,7 @@ class DB:
             return None
 
     def transaction(self):
-        transaction = Transactions()
+        transaction = Transactions(self)
         return transaction
 
 

@@ -1,18 +1,50 @@
-# from array import Array
-# from object import Object
 from db import DB 
-from transactions import Transactions
+# from transactions import Transactions
 from put_command import Put
+from remove_command import Remove
 
 
 if __name__ == '__main__':
-    invoker = Transactions()
-    db_object = DB()
-    invoker.put(Put(db_object,'a',['b','c','d',123]))
-    invoker.put(Put(db_object,'b',['b','e','d',123]))
-    print(invoker.put(Put(db_object,'c',None)))
+    # invoker = Transactions()
+    db_object = DB()    
+    invoker = db_object.transaction()
+    invoker1 = db_object.transaction()
 
-    # print(db_object.get('a',None))
+    #testcase for put command pattern 
+    invoker.put(Put(db_object,'name','Pooja'))
+    invoker.put(Put(db_object,'Bill',{'account 12343': {'name':'Bill', 'address':'123 main street', 'phones':['619-594-3535']}}))
+    invoker.put(Put(db_object,'Number',1234567989))
+    invoker.put(Put(db_object,'Dob',12201997))
+    invoker.put(Put(db_object,'d',123))
+    
+    invoker1.put(Put(db_object,'e',134))
+
+    print("After adding data: ",db_object.fetching_df())
+
+
+    #testcase for Null value input
+    print(invoker.put(Put(db_object,'Last Name',None)))
+
+
+    #testcase for remove command pattern
+    invoker.remove(Remove(db_object,'d'))
+    print("Database after removing the given key: ",db_object.fetching_df())
+
+    #testcase for invalid key to remove
+    print(invoker.remove(Remove(db_object,'First Name')))
+
+    #testcase for get and getX method
+    print(invoker.get(db_object,'Dob'))
+    print(invoker.getInt(db_object,'Bill'))
+    print(invoker.getArray(db_object,'name'))
+    print(invoker.getDouble(db_object,'Number'))
+
+
+
+
+
+
+
 
 
 
@@ -25,7 +57,7 @@ if __name__ == '__main__':
     # db_obj.put('name','Pooja')
 
 
-    print("printing the database",db_object.fetching_df())
+
 
     # print("\n")
     # print("\n")

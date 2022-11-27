@@ -1,16 +1,29 @@
 class Transactions(object):
     def put(self,command):
-        command.execute()
-
-    # def getX(self, key):
-    #     pass 
-
-    # def get(self, key):
-    #     pass
+        return command.execute()
 
     def remove(self,command):
-        command.execute()
+        return command.execute()
 
+    def getInt(self, DB, key):
+        return DB.getInt(key)
+
+    def getString(self,DB,key):
+        return DB.getString(key)
+
+    def getArray(self,DB,key):
+        return DB.getArray(key)
+
+    def getDouble(self,DB,key):
+        return DB.getDouble(key)
+
+    def getObject(self,DB,key):
+        return DB.getObject(key)
+
+
+    def get(self,DB,key):
+        return DB.get(key)
+        
 
     # def commit():
     #     pass
@@ -23,6 +36,4 @@ class Transactions(object):
 
 
 
-#transaction class will be invoker and db class will be receiver
-#invoker class will have register and execute method
 
