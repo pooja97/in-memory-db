@@ -66,12 +66,13 @@ if __name__ == '__main__':
 
 
     print(invoker.write_cmd_to_file(invoker.transaction_stack))
-
     print("\n")
     print("\n")
     print("\n")
 
     print("final database",db_object.fetching_df())
+
+    db_object.snapshot()
 
 
 

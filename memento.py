@@ -1,16 +1,15 @@
 import json
 class Persistence:
-    pass
-    # def __init__(self,data,filename ='file.tx',filesnapshot='untitled.txt'):
-    #     self.data = data
-    #     self.filename = filename
-    #     self.filesnapshot = filesnapshot
+    def __init__(self,data):
+        self.data = data
+        
+    def save_memento(data):
+        with open('dbSnapshot.txt','w') as db_file:
+            db_file.write(json.dumps(data))
+            db_file.close()
 
 
-    # def save_memento(self):
-    #     with open(self.filename ,'w+') as file:
-    #         file.write(json.dumps(self.data))
-    #         file.close() 
+    
 
     # def get_memento(self):
     #     try:

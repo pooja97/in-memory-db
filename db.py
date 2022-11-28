@@ -1,5 +1,6 @@
 from collections import defaultdict
 from transactions import Transactions
+from memento import Persistence
 
 class DB:
     def __init__(self):
@@ -87,17 +88,18 @@ class DB:
 
     #change the parameter declaration
     def snapshot(self):
-        pass
+        Persistence.save_memento(self.database)
+        
 
     #change the parameter declaration
-    def snapshot(self,file_commands,file_snapshot): 
-        pass 
+    # def snapshot(self,file_commands,file_snapshot): 
+    #     pass 
 
-    def recover(self):
-        pass 
+    # def recover(self):
+    #     pass 
 
-    def recover(self,file_commands,file_snapshot):
-        pass
+    # def recover(self,file_commands,file_snapshot):
+    #     pass
 
     
 
