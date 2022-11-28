@@ -6,6 +6,7 @@ from transactions import Transactions
 class DB:
     def __init__(self):
         self.database = defaultdict()
+        self.transactions_data = []
 
     #adding data to the database.
     def put(self,key,value):

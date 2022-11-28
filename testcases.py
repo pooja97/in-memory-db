@@ -1,12 +1,15 @@
 from db import DB 
-# from transactions import Transactions
 from put_command import Put
 from remove_command import Remove
 
 
 if __name__ == '__main__':
-    # invoker = Transactions()
-    db_object = DB()    
+    
+    db_object = DB() 
+
+    #opens transaction block
+    db_object.transactions_data+=[{}]
+
     invoker = db_object.transaction()
     invoker1 = db_object.transaction()
 
@@ -17,7 +20,9 @@ if __name__ == '__main__':
     invoker.put(Put(db_object,'Dob',12201997))
     invoker.put(Put(db_object,'d',123))
     
-    invoker1.put(Put(db_object,'e',134))
+    #commits the transactions
+    invoker.commit()
+
 
     print("After adding data: ",db_object.fetching_df())
 
@@ -25,6 +30,7 @@ if __name__ == '__main__':
     #testcase for Null value input
     print(invoker.put(Put(db_object,'Last Name',None)))
 
+    invoker1.put(Put(db_object,'e',134))
 
     #testcase for remove command pattern
     invoker.remove(Remove(db_object,'d'))
@@ -34,10 +40,11 @@ if __name__ == '__main__':
     print(invoker.remove(Remove(db_object,'First Name')))
 
     #testcase for get and getX method
-    print(invoker.get(db_object,'Dob'))
-    print(invoker.getInt(db_object,'Bill'))
-    print(invoker.getArray(db_object,'name'))
-    print(invoker.getDouble(db_object,'Number'))
+    print(invoker.get('Number'))
+    print(invoker.getInt('Bill'))
+    print(invoker.getArray('name'))
+    print(invoker.getDouble('Number'))
+    print(invoker.commit())
 
 
 
@@ -48,21 +55,7 @@ if __name__ == '__main__':
 
 
 
-    #test cases
-    # db_obj = DB()
-    # db_obj.put('a',['b','c','d',123])
-    # db_obj.put('v',11.2000)
-    # db_obj.put('Bill',{'account 12343': {'name':'Bill', 'address':'123 main street', 'phones':['619-594-3535']}})
-    # db_obj.put('no',20121997)
-    # db_obj.put('name','Pooja')
-
-
-
-
-    # print("\n")
-    # print("\n")
-
-    # #testcases for getX method:
+   
     # print(db_obj.getInt('no'))
     # print(db_obj.getObject('Bill'))
     # print(db_obj.getDouble('v'))
