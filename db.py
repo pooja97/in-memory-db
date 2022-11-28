@@ -17,6 +17,8 @@ class DB:
                 return "Value cannot be Null"
         else:
             return "Key already exists in the database"
+        return self.database
+
 
 
     #get Int value of the given key
