@@ -10,32 +10,26 @@ class Transactions(object):
         return putDB
 
     def remove(self,command):
-        removeDB = command.execute()
+        self.removeDB = command.execute()
         self.transaction_stack.append(command)
-        return removeDB
+        return self.removeDB
 
     def getInt(self,key):
-        self.transaction_stack.append('getInt')
         return self.db_objs.getInt(key)
 
     def getString(self,key):
-        self.transaction_stack.append('getString')
         return self.db_objs.getString(key)
 
     def getArray(self,key):
-        self.transaction_stack.append('getArray')
         return self.db_objs.getArray(key)
 
     def getDouble(self,key):
-        self.transaction_stack.append('getDouble')
         return self.db_objs.getDouble(key)
 
     def getObject(self,key):
-        self.transaction_stack.append('getObject')
         return self.db_objs.getObject(key)
 
     def get(self,key):
-        self.transaction_stack.append('get')
         return self.db_objs.get(key)
 
     #return False if transaction stack is empty and True if the transaction has been commited
@@ -45,11 +39,15 @@ class Transactions(object):
         else:
             return True
 
-    def abort(self):
+    def abort(self,command):
         if not self.transaction_stack:
             return 
         previous_transaction = self.transaction_stack.pop()
-        if previous_transaction == ''
+        if type(previous_transaction).__name__ == 'Put':
+            command.remove(previous_transaction.key)
+        else:
+            command.put(previous_transaction.key,self.removeDB)
+            self.transaction_stack.append(previous_transaction)
 
 
     # def isActive():

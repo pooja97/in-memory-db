@@ -76,8 +76,9 @@ class DB:
     #removing the given key from the database along with its value. 
     def remove(self,key):
         if key in self.database.keys():
+            removed_key = key
             value = self.database.pop(key)
-            return value
+            return removed_key,value
         else:
             return None
 

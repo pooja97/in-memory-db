@@ -6,4 +6,8 @@ class Remove(BaseCommand):
         self.key = key 
 
     def execute(self):
-        return self.receiver.remove(self.key)
+        value = self.receiver.remove(self.key)
+        return value
+
+    def put(self,value):
+        return self.receiver.put(value)

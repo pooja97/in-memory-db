@@ -18,11 +18,12 @@ if __name__ == '__main__':
     invoker.put(Put(db_object,'d',123))
 
     #For checking the database after adding data
-    print("After adding data: ",db_object.fetching_df())
+    # print("After adding data: ",db_object.fetching_df())
     
     #commits the transactions
     invoker.commit()    
     print("transaction_stack after the commit: ", invoker.transaction_stack)
+    print("database after the commit operation",db_object.fetching_df())
 
     
     #testcase for Null value input
@@ -31,11 +32,12 @@ if __name__ == '__main__':
 
     #testcase for remove command pattern
     invoker.remove(Remove(db_object,'d'))
-    print("Database after removing the given key: ",db_object.fetching_df())
-
     #testcase for checking the transaction stack after the remove operation
-    invoker.commit()    
+    invoker.commit()   
+    invoker.transaction_stack.pop()
+ 
     print("transaction_stack after the remove operation: ", invoker.transaction_stack)
+    print("database after the remove operation and commit", db_object.fetching_df())
 
     #testcase for invalid key to remove
     print(invoker.remove(Remove(db_object,'First Name')))
@@ -46,12 +48,27 @@ if __name__ == '__main__':
     invoker.getArray('name')
     invoker.getDouble('Number')
 
-    invoker.commit()
-    print("transaction stack after the get and getX methods", invoker.transaction_stack)
 
-    invoker.abort()
+    #testcases for abort function : put command abort
+    invoker.put(Put(db_object,'x',657))
+    print("transaction stack after the put operation",invoker.transaction_stack)
 
-    print("transaction stack after the abort command", invoker.transaction_stack)
+    invoker.abort(db_object)
+    print("transaction stack after the abort operation",invoker.transaction_stack)
+
+
+ 
+    #testcases for abort function:remove command abort
+    invoker.remove(Remove(db_object,'name'))
+    invoker.abort(db_object)
+    print("transaction stack after the abort operation",invoker.transaction_stack)
+
+    print("\n")
+    print("\n")
+    print("\n")
+
+    print("final database",db_object.fetching_df())
+
 
 
 
