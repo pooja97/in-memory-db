@@ -1,6 +1,4 @@
 from collections import defaultdict
-from array import Array
-from object import Object
 from transactions import Transactions
 
 class DB:
@@ -85,6 +83,23 @@ class DB:
     def transaction(self):
         transaction = Transactions(self)
         return transaction
+
+
+    #change the parameter declaration
+    def snapshot(self):
+        pass
+
+    #change the parameter declaration
+    def snapshot(self,file_commands,file_snapshot): 
+        pass 
+
+    def recover(self):
+        pass 
+
+    def recover(self,file_commands,file_snapshot):
+        pass
+
+    
 
 
     #function for fetching and displaying the database

@@ -1,4 +1,5 @@
 from db import DB 
+import unittest
 from put_command import Put
 from remove_command import Remove
 
@@ -33,8 +34,7 @@ if __name__ == '__main__':
     #testcase for remove command pattern
     invoker.remove(Remove(db_object,'d'))
     #testcase for checking the transaction stack after the remove operation
-    invoker.commit()   
-    invoker.transaction_stack.pop()
+    invoker.commit()
  
     print("transaction_stack after the remove operation: ", invoker.transaction_stack)
     print("database after the remove operation and commit", db_object.fetching_df())
@@ -63,11 +63,17 @@ if __name__ == '__main__':
     invoker.abort(db_object)
     print("transaction stack after the abort operation",invoker.transaction_stack)
 
+
+
+    print(invoker.write_cmd_to_file(invoker.transaction_stack))
+
     print("\n")
     print("\n")
     print("\n")
 
     print("final database",db_object.fetching_df())
+
+
 
 
 

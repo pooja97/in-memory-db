@@ -1,6 +1,4 @@
 from base_command import BaseCommand
-from remove_command import Remove
-
 class Put(BaseCommand):
     def __init__(self,receiver,key,data):
         self.receiver = receiver
@@ -12,3 +10,6 @@ class Put(BaseCommand):
 
     def remove(self,key):
         return self.receiver.remove(key)
+
+    def toString(self):
+        return str(self.key)+' '+str(self.data)

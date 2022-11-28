@@ -1,8 +1,10 @@
+from put_command import Put
 class Transactions(object):
     transaction_stack = []
 
     def __init__(self,db_objs):
         self.db_objs = db_objs
+
     
     def put(self,command):
         putDB = command.execute()
@@ -49,9 +51,18 @@ class Transactions(object):
             command.put(previous_transaction.key,self.removeDB)
             self.transaction_stack.append(previous_transaction)
 
+    def write_cmd_to_file(self,command_data):
+        with open('commands.txt','w') as command_file:
+            for x in command_data:
+                command_file.write(str(type(x).__name__+' : '+x.toString()+'\n'))
+            command_file.close()
 
-    # def isActive():
-    #     pass 
+    def isActive(self): #need help
+        prev_len_transaction_stack = len(self.transaction_stack)
+        if prev_len_transaction_stack == len(self.transaction_stack):
+            return True 
+        else:
+            return False 
 
 
 
