@@ -92,8 +92,10 @@ class DB:
         
 
     #change the parameter declaration
-    # def snapshot(self,file_commands,file_snapshot): 
-    #     pass 
+    def snapshot_command(self,commands_file): 
+        Persistence.save_memento(commands_file,self.database)
+
+    
 
     # def recover(self):
     #     pass 

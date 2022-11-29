@@ -9,13 +9,13 @@ class Persistence:
             db_file.close()
 
 
+    def save_memento(self,cmd_file,db_data):
+        with open('commandSnapshot.txt','w') as cm_file:
+            cm_file.write(json.dumps(cmd_file))
+            cm_file.close()
+
+        with open('dbSnapshot.txt','w') as db_file:
+            db_file.write(json.dumps(db_data))
+            db_file.close()
+
     
-
-    # def get_memento(self):
-    #     try:
-    #         with open(self.filename, 'r') as inventory_file:
-    #             inventory_content = inventory_file.read()
-    #             self.inventory_data = json.loads(inventory_content)
-
-    #     except json.JSONDecodeError:
-    #         print("Memento file is empty! Proceeding")

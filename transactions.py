@@ -1,4 +1,3 @@
-from put_command import Put
 class Transactions(object):
     transaction_stack = []
 

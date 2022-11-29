@@ -73,6 +73,7 @@ if __name__ == '__main__':
     print("final database",db_object.fetching_df())
 
     db_object.snapshot()
+    db_object.snapshot_command('./commands.tx')
 
 
 
