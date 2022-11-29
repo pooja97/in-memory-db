@@ -13,12 +13,6 @@ class Remove(BaseCommand):
     def put(self,value):
         return self.receiver.put(value)
 
-    # def toString(self):
-    #     return str(self.key)
-
     def toString(self):
         return str(self.key)
 
-    # def toJSON(self):
-    #     return json.dumps(self, default=lambda o: o.__dict__, 
-    #         sort_keys=True, indent=4)

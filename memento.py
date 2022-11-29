@@ -35,12 +35,13 @@ class Persistence:
                     value = val_list[1]
                     content[key]=value
 
-                if cmd == 'Remove':
+                elif cmd == 'Remove':
                     #do something with val
                     if key not in content:
                         return "Invalid key"
                     else:
-                        del content[key] 
+                        del content[key]
+            cmds_file.close() 
         return content
 
     
@@ -48,6 +49,7 @@ class Persistence:
         with open(db_snapshot,'r') as dbFile:
             content = json.load(dbFile)
             dbFile.close()
+
         with open(cmd_file,'r') as cmds_file:
             for i in cmds_file:
                 cmd = i.split('_')[0]
@@ -60,12 +62,13 @@ class Persistence:
                     value = val_list[1]
                     content[key]=value
 
-                if cmd == 'Remove':
+                elif cmd == 'Remove':
                     #do something with val
                     if key not in content:
                         return "Invalid key"
                     else:
                         del content[key] 
+            cmds_file.close()    
         return content
 
     

@@ -1,3 +1,4 @@
+import sys
 class Array:
     def __init__(self):
         self.input_array = list()
@@ -65,5 +66,5 @@ class Array:
         return self.input_array.pop(index)
         
 
-    def fromString(self,string_value): #not able to understand need help with this
-        pass
+    def fromString(self,string_value): 
+        return getattr(sys.modules[__name__], string_value)

@@ -1,3 +1,4 @@
+import sys
 class Object:
     def __init__(self):
         self.object_dict = {}
@@ -72,19 +73,13 @@ class Object:
         else:
             return None
 
-
     def toString(self):
-        pass
+        return str(self.object_dict)
 
-    def fromString(self):
-        pass
-
-
+    def fromString(self,string_value):
+        return getattr(sys.modules[__name__], string_value)
 
 
 
-    #function for fetching and displaying the database
-    def fetching_df(self):
-        return self.object_dict
 
 

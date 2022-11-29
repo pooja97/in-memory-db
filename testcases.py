@@ -2,7 +2,8 @@ from db import DB
 import unittest
 from put_command import Put
 from remove_command import Remove
-
+from cursor import Cursor
+from observer import Observer
 
 if __name__ == '__main__':
     
@@ -18,8 +19,6 @@ if __name__ == '__main__':
     invoker.put(Put(db_object,'Dob',12201997))
     invoker.put(Put(db_object,'d',123))
 
-    #For checking the database after adding data
-    # print("After adding data: ",db_object.fetching_df())
     
     #commits the transactions
     invoker.commit()    
@@ -56,14 +55,10 @@ if __name__ == '__main__':
     invoker.abort(db_object)
     print("transaction stack after the abort operation",invoker.transaction_stack)
 
-
- 
     #testcases for abort function:remove command abort
     invoker.remove(Remove(db_object,'name'))
     invoker.abort(db_object)
     print("transaction stack after the abort operation",invoker.transaction_stack)
-
-
 
     print(invoker.write_cmd_to_file(invoker.transaction_stack))
     print("\n")
@@ -71,16 +66,23 @@ if __name__ == '__main__':
     print("\n")
 
     # print("final database",db_object.fetching_df())
-
     db_object.snapshot()
     db_object.snapshot_command('./commands.txt', db_object.database)
 
-    database = db_object.recover()
-    db_object.database = database
 
-    database_recover = db_object.recover_cmd('./commands.txt','./dbSnapshot.txt')
-    db_object.database = database_recover
+    #For recover memento 
+    # database = db_object.recover()
+    # db_object.database = database
 
+    # database_recover = db_object.recover_cmd('./commands.txt','./dbSnapshot.txt')
+    # db_object.database = database_recover
+
+
+    cursor_data = db_object.getCursor("Number")
+    cursor_obj = Cursor(cursor_data) 
+
+    observer_obj = Observer()
+    observer_obj.addObserver(cursor_obj)
 
 
 

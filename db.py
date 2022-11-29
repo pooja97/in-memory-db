@@ -105,6 +105,12 @@ class DB:
         Persistence.get_memento_command(file_commands,file_snapshot)
 
 
+    #subscriber
+    def getCursor(self,key):
+        cursor_data = self.database[key]
+        return cursor_data
+
+
     #function for fetching and displaying the database
     def fetching_df(self):
         return self.database
