@@ -79,8 +79,8 @@ if __name__ == '__main__':
 
 
     cursor_data = db_object.getCursor("Number")
-    observer_obj = Observer()
-    cursor_data.addObserver(observer_obj)
+    observer = Observer(cursor_data)
+    cursor_data.notify_observers("State Change",kw = "python")
 
 
 

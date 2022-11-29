@@ -1,17 +1,29 @@
-#publisher class
-from observer import Observer
+#Observable class
 class Cursor:
     def __init__(self,cursor):
         self.cursor = cursor
+        self.observers = []
 
-    def getX(self):
+    def getInt(self):
         if isinstance(self.cursor,int):
             return "Instance of an Int"
-        elif isinstance(self.cursor,str):
+        else:
+            return "Invalid type"
+            
+    def getString(self):
+        if isinstance(self.cursor,str):
             return "Instance of a string"
-        elif isinstance(self.cursor,float):
+        else:
+            return "Invalid type"
+
+    def getDouble(self):
+        if isinstance(self.cursor,float):
             return "Instance of a double"
-        elif isinstance(self.cursor,object):
+        else:
+            return "Invalid type"
+
+    def getObject(self):
+        if isinstance(self.cursor,object):
             return "Instance of an object"
         else:
             return "Invalid type"
@@ -19,9 +31,14 @@ class Cursor:
     def get(self):
         return self.cursor
 
-    def addObserver(self,):
-        Observer.addObserver(self, self.cursor)
+    def addObserver(self, observer):
+        self.observers.append(observer)
 
-    def removeObserver(self):
-        Observer.removeObserver(self,self.cursor)
+    def removeObserver(self,observer):
+        self.observers.remove(observer)
+
+    def notify_observers(self,*args,**kwargs):
+        for obs in self.observers:
+            obs.notify(self)
+
 
