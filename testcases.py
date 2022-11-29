@@ -1,8 +1,6 @@
 from db import DB 
-import unittest
 from put_command import Put
 from remove_command import Remove
-from cursor import Cursor
 from observer import Observer
 
 if __name__ == '__main__':

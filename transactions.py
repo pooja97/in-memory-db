@@ -55,10 +55,9 @@ class Transactions(object):
         with open('commands.txt','w') as command_file:
             for x in command_data:
                 command_file.write(str(type(x).__name__+'_'+x.toString()+'\n'))
-                # json.dump(x.toJSON(),command_file)
             command_file.close()
 
-    def isActive(self): #need help
+    def isActive(self): 
         prev_len_transaction_stack = len(self.transaction_stack)
         if prev_len_transaction_stack == len(self.transaction_stack):
             return True 

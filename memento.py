@@ -43,7 +43,6 @@ class Persistence:
                         del content[key]
             cmds_file.close() 
         return content
-
     
     def get_memento_command(cmd_file,db_snapshot):
         with open(db_snapshot,'r') as dbFile:
