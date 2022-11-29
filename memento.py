@@ -9,7 +9,6 @@ class Persistence:
             db_file.write(json.dumps(data))
             db_file.close()
 
-
     def save_memento(cmd_file,db_data):
         with open('commandSnapshot.txt','w') as cm_file:
             shutil.copy(cmd_file,'commandSnapshot.txt')
@@ -29,7 +28,6 @@ class Persistence:
                 cmd = i.split('_')[0]
                 val = i.split('_')[1]
                 if cmd == 'Put':
-                    print(val)
                     #do something with put
                     val = str(val).strip()
                     val_list = val.split("-")
@@ -39,11 +37,35 @@ class Persistence:
 
                 if cmd == 'Remove':
                     #do something with val
-                    del content[key]
+                    if key not in content:
+                        return "Invalid key"
+                    else:
+                        del content[key] 
         return content
 
     
-    # def get_memento(self):
-    #     pass
+    def get_memento_command(cmd_file,db_snapshot):
+        with open(db_snapshot,'r') as dbFile:
+            content = json.load(dbFile)
+            dbFile.close()
+        with open(cmd_file,'r') as cmds_file:
+            for i in cmds_file:
+                cmd = i.split('_')[0]
+                val = i.split('_')[1]
+                if cmd == 'Put':
+                    #do something with put
+                    val = str(val).strip()
+                    val_list = val.split("-")
+                    key = val_list[0]
+                    value = val_list[1]
+                    content[key]=value
+
+                if cmd == 'Remove':
+                    #do something with val
+                    if key not in content:
+                        return "Invalid key"
+                    else:
+                        del content[key] 
+        return content
 
     

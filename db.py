@@ -101,10 +101,8 @@ class DB:
         self.database = Persistence.get_memento() 
         
 
-    # def recover(self,file_commands,file_snapshot):
-    #     pass
-
-    
+    def recover_cmd(self,file_commands,file_snapshot):
+        Persistence.get_memento_command(file_commands,file_snapshot)
 
 
     #function for fetching and displaying the database

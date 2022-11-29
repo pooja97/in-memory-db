@@ -74,7 +74,13 @@ if __name__ == '__main__':
 
     db_object.snapshot()
     db_object.snapshot_command('./commands.txt', db_object.database)
-    db_object.recover()
+
+    database = db_object.recover()
+    db_object.database = database
+
+    database_recover = db_object.recover_cmd('./commands.txt','./dbSnapshot.txt')
+    db_object.database = database_recover
+
 
 
 
