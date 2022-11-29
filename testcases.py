@@ -79,10 +79,8 @@ if __name__ == '__main__':
 
 
     cursor_data = db_object.getCursor("Number")
-    # cursor_obj = Cursor(cursor_data) 
-
     observer_obj = Observer()
-    observer_obj.addObserver(cursor_data)
+    cursor_data.addObserver(observer_obj)
 
 
 
