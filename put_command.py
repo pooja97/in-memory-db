@@ -12,4 +12,4 @@ class Put(BaseCommand):
         return self.receiver.remove(key)
 
     def toString(self):
-        return str(self.key)+' '+str(self.data)
+        return str(self.key)+'-'+str(self.data)

@@ -1,3 +1,4 @@
+import json
 class Transactions(object):
     transaction_stack = []
 
@@ -53,7 +54,8 @@ class Transactions(object):
     def write_cmd_to_file(self,command_data):
         with open('commands.txt','w') as command_file:
             for x in command_data:
-                command_file.write(str(type(x).__name__+' : '+x.toString()+'\n'))
+                command_file.write(str(type(x).__name__+'_'+x.toString()+'\n'))
+                # json.dump(x.toJSON(),command_file)
             command_file.close()
 
     def isActive(self): #need help

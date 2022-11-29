@@ -85,20 +85,21 @@ class DB:
         transaction = Transactions(self)
         return transaction
 
-
     #change the parameter declaration
     def snapshot(self):
         Persistence.save_memento_db(self.database)
+        Transactions.transaction_stack = []
         
 
     #change the parameter declaration
     def snapshot_command(self,commands_file,database): 
-        # database = self.database
         Persistence.save_memento(commands_file,database)
+        Transactions.transaction_stack = []
 
-    
     def recover(self):
-        Persistence.get_memento(self) 
+        # print(self.database)
+        self.database = Persistence.get_memento() 
+        
 
     # def recover(self,file_commands,file_snapshot):
     #     pass

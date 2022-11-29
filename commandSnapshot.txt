@@ -1,9 +1,9 @@
-Put : name Pooja
-Put : Bill {'account 12343': {'name': 'Bill', 'address': '123 main street', 'phones': ['619-594-3535']}}
-Put : Number 1234567989
-Put : Dob 12201997
-Put : d 123
-Put : Last Name None
-Remove : d
-Remove : First Name
-Remove : name
+Put_name-Pooja
+Put_Bill-{'account 12343': {'name': 'Bill', 'address': '123 main street', 'phones': ['619-594-3535']}}
+Put_Number-1234567989
+Put_Dob-12201997
+Put_d-123
+Put_LastName-None
+Remove_d
+Remove_FirstName
+Remove_name

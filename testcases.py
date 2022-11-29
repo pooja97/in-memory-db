@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     
     #testcase for Null value input
-    print(invoker.put(Put(db_object,'Last Name',None)))
+    print(invoker.put(Put(db_object,'LastName',None)))
 
 
     #testcase for remove command pattern
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     print("database after the remove operation and commit", db_object.fetching_df())
 
     #testcase for invalid key to remove
-    print(invoker.remove(Remove(db_object,'First Name')))
+    print(invoker.remove(Remove(db_object,'FirstName')))
 
     #testcase for get and getX method
     invoker.get('Number')
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     print("\n")
     print("\n")
 
-    print("final database",db_object.fetching_df())
+    # print("final database",db_object.fetching_df())
 
     db_object.snapshot()
     db_object.snapshot_command('./commands.txt', db_object.database)
