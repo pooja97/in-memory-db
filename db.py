@@ -88,17 +88,17 @@ class DB:
 
     #change the parameter declaration
     def snapshot(self):
-        Persistence.save_memento(self.database)
+        Persistence.save_memento_db(self.database)
         
 
     #change the parameter declaration
-    def snapshot_command(self,commands_file): 
-        Persistence.save_memento(commands_file,self.database)
+    def snapshot_command(self,commands_file,database): 
+        # database = self.database
+        Persistence.save_memento(commands_file,database)
 
     
-
-    # def recover(self):
-    #     pass 
+    def recover(self):
+        Persistence.get_memento(self) 
 
     # def recover(self,file_commands,file_snapshot):
     #     pass
