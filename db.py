@@ -1,6 +1,7 @@
 from collections import defaultdict
 from transactions import Transactions
 from memento import Persistence
+from cursor import Cursor
 
 class DB:
     def __init__(self):
@@ -97,7 +98,6 @@ class DB:
         Transactions.transaction_stack = []
 
     def recover(self):
-        # print(self.database)
         self.database = Persistence.get_memento() 
         
 
@@ -107,8 +107,8 @@ class DB:
 
     #subscriber
     def getCursor(self,key):
-        cursor_data = self.database[key]
-        return cursor_data
+        cursor_obj = Cursor(self.database[key])
+        return cursor_obj
 
 
     #function for fetching and displaying the database

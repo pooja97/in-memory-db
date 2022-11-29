@@ -60,7 +60,7 @@ if __name__ == '__main__':
     invoker.abort(db_object)
     print("transaction stack after the abort operation",invoker.transaction_stack)
 
-    print(invoker.write_cmd_to_file(invoker.transaction_stack))
+    print("transaction stack after file write: ",invoker.write_cmd_to_file(invoker.transaction_stack))
     print("\n")
     print("\n")
     print("\n")
@@ -79,10 +79,10 @@ if __name__ == '__main__':
 
 
     cursor_data = db_object.getCursor("Number")
-    cursor_obj = Cursor(cursor_data) 
+    # cursor_obj = Cursor(cursor_data) 
 
     observer_obj = Observer()
-    observer_obj.addObserver(cursor_obj)
+    observer_obj.addObserver(cursor_data)
 
 
 
