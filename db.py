@@ -152,7 +152,7 @@ class DB:
     '''
 
     def snapshot(self):
-        Persistence.save_memento_db(self.database)
+        Persistence.saveMementodb(self.database)
         Transactions.transaction_stack = []
 
     '''
@@ -161,8 +161,8 @@ class DB:
     output: returns empty Transaction stack after taking a snapshot 
     '''
 
-    def snapshot_command(self,commands_file,database): 
-        Persistence.save_memento(commands_file,database)
+    def snapshotCommand(self,commands_file,database): 
+        Persistence.saveMemento(commands_file,database)
         Transactions.transaction_stack = []
 
     '''
@@ -171,15 +171,15 @@ class DB:
     '''
 
     def recover(self):
-        self.database = Persistence.get_memento() 
+        self.database = Persistence.getMemento() 
         
     '''
     desc: Function for recovering database from the snapshot with the specified parameters
     output: returns the database
     '''
 
-    def recover_cmd(self,file_commands,file_snapshot):
-        Persistence.get_memento_command(file_commands,file_snapshot)
+    def recoverCommand(self,file_commands,file_snapshot):
+        Persistence.getMementoCommand(file_commands,file_snapshot)
 
 
     '''

@@ -8,7 +8,7 @@ if __name__ == '__main__':
     db_object = DB() 
 
     invoker = db_object.transaction()
-    invoker1 = db_object.transaction()
+    # invoker1 = db_object.transaction()
 
     #testcase for put command pattern 
     invoker.put(Put(db_object,'name','Pooja'))
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     #commits the transactions
     invoker.commit()    
     print("transaction_stack after the commit: ", invoker.transaction_stack)
-    print("database after the commit operation",db_object.fetching_df())
+    # print("database after the commit operation",db_object.fetching_df())
 
     
     #testcase for Null value input
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     invoker.commit()
  
     print("transaction_stack after the remove operation: ", invoker.transaction_stack)
-    print("database after the remove operation and commit", db_object.fetching_df())
+    # print("database after the remove operation and commit", db_object.fetching_df())
 
     #testcase for invalid key to remove
     print(invoker.remove(Remove(db_object,'FirstName')))
@@ -58,21 +58,21 @@ if __name__ == '__main__':
     invoker.abort(db_object)
     print("transaction stack after the abort operation",invoker.transaction_stack)
 
-    print("transaction stack after file write: ",invoker.write_cmd_to_file(invoker.transaction_stack))
+    print("transaction stack after file write: ",invoker.writeCmdToFile(invoker.transaction_stack))
     print("\n")
     print("\n")
     print("\n")
 
     # print("final database",db_object.fetching_df())
     db_object.snapshot()
-    db_object.snapshot_command('./commands.txt', db_object.database)
+    db_object.snapshotCommand('./commands.txt', db_object.database)
 
 
     #For recover memento 
     # database = db_object.recover()
     # db_object.database = database
 
-    # database_recover = db_object.recover_cmd('./commands.txt','./dbSnapshot.txt')
+    # database_recover = db_object.recoverCommand('./commands.txt','./dbSnapshot.txt')
     # db_object.database = database_recover
 
 
