@@ -1,1 +1,1 @@
-# in-memory-db implementation using Command and Memento pattern in Python.
+# In memory database implementation using Command and Memento pattern in Python.
